@@ -1,0 +1,10 @@
+library(data.table)
+dt<-fread("household_power_consumption.txt")
+setkey(dt,Date)
+twodays<-dt[J(c('2/1/2007','2/2/2007')),]
+gap<-as.numeric(twodays[,Global_active_power])
+datev<-strptime(paste(twodays[,Date],twodays[,Time], sep=' '),'%m/%d/%Y %H:%M:%S')
+png("plot2.png",width=480,height=480)
+par(mar=c(3,6,2,2))
+plot(datev,gap,xlab="",ylab='Global Active Power (kilowatts)',type="o",cex=0)
+dev.off()
