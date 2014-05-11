@@ -1,7 +1,7 @@
 library(data.table)
 dt<-fread("household_power_consumption.txt")
 setkey(dt,Date)
-twodays<-dt[J(c('2/1/2007','2/2/2007')),]
+twodays<-dt[J(c('1/2/2007','1/2/2007')),]
 gap<-as.numeric(twodays[,Global_active_power])
 
 png("plot1.png",width=480,height=480)
